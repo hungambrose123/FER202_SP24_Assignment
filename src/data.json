@@ -1,0 +1,25 @@
+{
+    "post":[
+        {
+            "id" : 1,
+            "title": "First post",
+            "content": "First post content",
+            "comment":[
+                {
+                    "id": 1,
+                    "commentTitle": "First comment",
+                    "commentBody": "First comment body",
+                    "userId": 2
+                }
+            ],
+            "userId": 2
+        }
+    ],
+    "user":[
+        {
+            "id": 1,
+            "username": "HungNV",
+            "password": "HungNV123"
+        }
+    ]
+}
