@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from '../slice/counterSlice';
+import accountSlice from "../slice/accountSlice";
+import dataFetchingReducer from "../slice/dataFetchingSlice";
 
 export default configureStore({
     reducer:{
-        counter: counterReducer,
+        account: accountSlice,
+        data: dataFetchingReducer
     }
 })

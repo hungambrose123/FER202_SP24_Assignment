@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux'
-import { increment, decrement } from '../slice/counterSlice';
+import { getPosts, getUsers} from '../slice/dataFetchingSlice';
 
 const Home = () => {
   // testing Spring boot 3 APIs
@@ -13,14 +13,32 @@ const Home = () => {
   //   .catch(err => console.error(err));
   // },[])
 
-  const counter = useSelector(state => state.counter.value);
+  const posts = useSelector(state => state.data.post);
+  const postStatus = useSelector(state => state.data.postLoading);
+  const users = useSelector(state => state.data.user);
+  const userStatus = useSelector(state => state.data.userLoading);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (postStatus === 'idle') {
+      dispatch(getUsers());
+    }
+    if (userStatus === 'idle') {
+      dispatch(getPosts());
+    }
+  }, [postStatus, userStatus, dispatch])
+
+  // useEffect(() => {
+  //   console.log(posts)
+  //   console.log(users)
+  // }, [posts,users]);
 
   return (
     <div className='container'>
-        <h1>Counter value: {counter}</h1>
-        <button className='btn btn-success' onClick={() => dispatch(increment())}>Increment</button>
-        <button className='btn btn-danger' onClick={() => dispatch(decrement())}>Decrement</button>
+        <button onClick={()=> {
+          dispatch(getUsers());
+          console.log(users.length);
+        }}>Get users list</button>
     </div>
   )
 }
