@@ -1,7 +1,7 @@
 {
   "post": [
     {
-      "id": 1,
+      "id": "1",
       "title": "First post",
       "content": "First post content",
       "comment": [
@@ -13,16 +13,30 @@
         }
       ],
       "userId": 2
+    },
+    {
+      "id": "2",
+      "title": "What is your favorite artist ?",
+      "content": "basicaltt, i want to talk about .....",
+      "comment": [
+        {
+          "id": 2,
+          "commentTitle": "Hmmm",
+          "commentBody": "I guess lady gaga",
+          "userId": 2
+        }
+      ],
+      "userId": 2
     }
   ],
   "user": [
     {
-      "id": 1,
+      "id": "1",
       "username": "HungNV",
       "password": "HungNV123"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "abc",
       "password": "123"
     }

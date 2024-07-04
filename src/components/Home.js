@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux'
 import { getPosts, getUsers} from '../slice/dataFetchingSlice';
+import PostList from './PostList';
+import PostForm from './PostForm';
 
 const Home = () => {
   // testing Spring boot 3 APIs
@@ -14,31 +16,35 @@ const Home = () => {
   // },[])
 
   const posts = useSelector(state => state.data.post);
-  const postStatus = useSelector(state => state.data.postLoading);
+  const postStatus = useSelector(state => state.data.postStatus);
   const users = useSelector(state => state.data.user);
-  const userStatus = useSelector(state => state.data.userLoading);
+  const userStatus = useSelector(state => state.data.userStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (postStatus === 'idle') {
-      dispatch(getUsers());
+      dispatch(getPosts());
+      console.log('getting posts...');
     }
     if (userStatus === 'idle') {
-      dispatch(getPosts());
+      dispatch(getUsers());
+      console.log('getting users...');
     }
   }, [postStatus, userStatus, dispatch])
 
-  // useEffect(() => {
-  //   console.log(posts)
-  //   console.log(users)
-  // }, [posts,users]);
 
   return (
     <div className='container'>
-        <button onClick={()=> {
-          dispatch(getUsers());
-          console.log(users.length);
-        }}>Get users list</button>
+        <div className="row">
+          <div className="col-6">Your questions ?</div>
+          <PostForm />
+          <div className="col-6">Question List</div>
+        </div>
+        <div className="row">
+            <div className="col-12">
+                <PostList posts={posts}/>
+            </div>
+        </div>
     </div>
   )
 }

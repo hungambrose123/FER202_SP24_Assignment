@@ -9,6 +9,7 @@ import CreateQuestion from './components/CreateQuestion';
 import store from './store/store';
 import Login from './components/Login';
 import Register from './components/Register';
+import PostDetail from './components/PostDetail';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/createQuestion' element={<CreateQuestion />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/postDetail/:id' element={<PostDetail/>} />
             <Route path='*' element={<Error />} />
           </Routes>
           <Footer/>
