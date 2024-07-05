@@ -10,6 +10,7 @@ import store from './store/store';
 import Login from './components/Login';
 import Register from './components/Register';
 import PostDetail from './components/PostDetail';
+import PostForm from './components/PostForm';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/createQuestion' element={<CreateQuestion />} />
+            <Route path='/createQuestion' element={<PostForm />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/postDetail/:id' element={<PostDetail/>} />

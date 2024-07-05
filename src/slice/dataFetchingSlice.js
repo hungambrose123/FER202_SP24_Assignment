@@ -26,6 +26,7 @@ export const getUsers = createAsyncThunk("getUsers", async () =>{
     }
   );
 
+
   const dataFetchingSlice = createSlice({
     name: 'data',
     initialState,
@@ -67,6 +68,7 @@ export const getUsers = createAsyncThunk("getUsers", async () =>{
         builder.addCase(getUsers.rejected, (state) => {
             state.userStatus = 'rejected';
           });
+
 
       }
 })

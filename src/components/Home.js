@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux'
 import { getPosts, getUsers} from '../slice/dataFetchingSlice';
 import PostList from './PostList';
-import PostForm from './PostForm';
 
 const Home = () => {
   // testing Spring boot 3 APIs
@@ -32,13 +31,10 @@ const Home = () => {
     }
   }, [postStatus, userStatus, dispatch])
 
-
   return (
     <div className='container'>
         <div className="row">
-          <div className="col-6">Your questions ?</div>
-          <PostForm />
-          <div className="col-6">Question List</div>
+          <div className="col text-center"><h1>Question List</h1></div>
         </div>
         <div className="row">
             <div className="col-12">

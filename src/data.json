@@ -10,6 +10,12 @@
           "commentTitle": "First comment",
           "commentBody": "First comment body",
           "userId": 2
+        },
+        {
+          "id": 2,
+          "commentTitle": "second one tho",
+          "commentBody": "testing testing",
+          "userId": 2
         }
       ],
       "userId": 2
@@ -27,6 +33,27 @@
         }
       ],
       "userId": 2
+    },
+    {
+      "id": 3,
+      "title": "third question",
+      "content": "ahahaha",
+      "comment": [],
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "title": "another Post",
+      "content": "for searching",
+      "comment": [],
+      "userId": 2
+    },
+    {
+      "id": 5,
+      "title": "Câu hỏi thứ N",
+      "content": "Câu hỏi tiếng Việt",
+      "comment": [],
+      "userId": 2
     }
   ],
   "user": [
@@ -39,6 +66,11 @@
       "id": "2",
       "username": "abc",
       "password": "123"
+    },
+    {
+      "id": "3",
+      "username": "nrereg",
+      "password": "098"
     }
   ]
 }

@@ -32,7 +32,7 @@ const PostForm = () => {
             }
             axios.post(postApi, newPost)
             .then(res => {
-                console.log('post successful');
+                alert('Create question successful');
                 dispatch(getPosts());
             })
             .catch(err => console.error(err));
@@ -43,6 +43,7 @@ const PostForm = () => {
 
     return (
         <div className="container">
+            <h1>Create a question</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -57,7 +58,7 @@ const PostForm = () => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <button className='btn btn-primary' type="submit">Post question</button>
+                <button className='btn btn-primary my-3' type="submit">Create question</button>
             </form>
         </div>
     );

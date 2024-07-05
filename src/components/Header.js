@@ -26,10 +26,6 @@ const Header = () => {
           <li className='px-2'><NavLink to='/createQuestion' className='text-decoration-none text-dark'>Create question</NavLink></li>
         </ul>
 
-        <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" className="form-control" placeholder="Search..." aria-label="Search" />
-        </form>
-
         {account.id === -1 && <ul className="nav col-12 col-lg-auto me-1 justify-content-center">
           <li className="px-2"><NavLink to='/login' className='text-decoration-none text-dark'>Login</NavLink></li>
           <li className="px-2"><NavLink to='/register' className='text-decoration-none text-dark'>Register</NavLink></li>
