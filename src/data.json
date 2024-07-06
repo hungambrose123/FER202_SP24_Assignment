@@ -4,69 +4,36 @@
       "id": "1",
       "title": "First post",
       "content": "First post content",
-      "comment": [
-        {
-          "id": 1,
-          "commentTitle": "First comment",
-          "commentBody": "First comment body",
-          "userId": 2
-        },
-        {
-          "id": 2,
-          "commentTitle": "second one tho",
-          "commentBody": "testing testing",
-          "userId": 2
-        }
-      ],
       "userId": 2
     },
     {
       "id": "2",
       "title": "What is your favorite artist ?",
       "content": "basicaltt, i want to talk about .....",
-      "comment": [
-        {
-          "id": 2,
-          "commentTitle": "Hmmm",
-          "commentBody": "I guess lady gaga",
-          "userId": 2
-        }
-      ],
       "userId": 2
     },
     {
       "id": "3",
       "title": "third question",
       "content": "ahahaha",
-      "comment": [],
       "userId": 1
     },
     {
       "id": "4",
       "title": "another Post",
       "content": "for searching",
-      "comment": [],
       "userId": 2
     },
     {
       "id": "5",
       "title": "Câu hỏi thứ N",
       "content": "Câu hỏi tiếng Việt",
-      "comment": [
-        {
-          "id": 1,
-          "commentTitle": "sdfgdsfg",
-          "commentBody": "sdfsdf",
-          "userId": 2
-        }
-      ],
       "userId": 2
     },
     {
       "id": "6",
       "title": "dfsgsdfg",
       "content": "dsfgsdfgd",
-      "comment": [],
       "userId": 1
     }
   ],
@@ -85,6 +52,43 @@
       "id": "3",
       "username": "nrereg",
       "password": "098"
+    }
+  ],
+  "comment": [
+    {
+      "id": 1,
+      "commentTitle": "test123",
+      "commentBody": "test3454",
+      "postId": 1,
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "commentTitle": "Hmmm",
+      "commentBody": "I guess lady gaga",
+      "postId": 2,
+      "userId": 2
+    },
+    {
+      "id": 4,
+      "commentTitle": "sdfgdsfg",
+      "commentBody": "sdfsdf",
+      "postId": 5,
+      "userId": 2
+    },
+    {
+      "commentTitle": "testisngsfsdasd",
+      "commentBody": "dfsgdsfggdf",
+      "postId": 1,
+      "userId": 2,
+      "id": 5
+    },
+    {
+      "commentTitle": "another one",
+      "commentBody": "bncvbcvb",
+      "postId": 1,
+      "userId": 2,
+      "id": 6
     }
   ]
 }

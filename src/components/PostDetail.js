@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import postApi from '../api/postApi';
+import commentApi from '../api/commentApi';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,20 +14,11 @@ const PostDetail = () => {
   const newCommentTitleRef = useRef();
   const newCommentBodyRef = useRef();
   const [post, setPost] = useState({});
+  const [comment, setComment] = useState([]);
   const userList = useSelector(state => state.data.user);
   const account = useSelector(state => state.account);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    axios.get(`${postApi}?id=${id}`)
-    .then(res => {
-      setPost(res.data);
-      sizeOfComment = res.data[0].comment.length;
-    })
-    .catch(err => console.error(err));
-
-    dispatch(getUsers());
-  }, [id, dispatch]);
 
   const getUsername = (userId) => {
     return userList.find(user => Number(user.id) === userId)?.username || 'Unknown User';
@@ -36,17 +28,51 @@ const PostDetail = () => {
     e.preventDefault();
     const title = newCommentTitleRef.current.value;
     const body = newCommentBodyRef.current.value;
-    const toPut = {...post[0],
-      comment: [...post[0].comment,
-      {id: ++sizeOfComment,
+    const newComment = {
       commentTitle: title,
       commentBody: body,
-      userId: Number(account.id)}]
+      postId: Number(id),
+      userId: Number(account.id)
     };
-    axios.put(`${postApi}/${id}`, toPut)
-    .then(() => alert('Insert a comment successful'))
+    axios.post(`${commentApi}`, newComment)
+    .then(() => {
+      alert('Insert new comment successful');
+      newCommentTitleRef.current.value = '';
+      newCommentBodyRef.current.value = '';
+      refreshData();
+    })
     .catch(err => console.error(err));
   };
+
+  const handleDeleteComment = (commentId) => {
+    if(window.confirm(`Do you want to delete comment id ${commentId} ?`)){
+      axios.delete(`${commentApi}/${commentId}`)
+      .then(res => {
+        alert(`Delete comment id ${commentId} successful`);
+        refreshData();
+      })
+      .catch(err => console.error(err));
+    }
+  }
+
+  const refreshData = () => {
+    axios.get(`${postApi}?id=${id}`)
+    .then(res => {
+      setPost(res.data);
+    })
+    .catch(err => console.error(err));
+    axios.get(`${commentApi}?postId=${id}`)
+    .then(res => {
+      setComment(res.data);
+    })
+    .catch(err => console.error(err));
+
+    dispatch(getUsers());
+  }
+
+  useEffect(() => {
+    refreshData();
+  }, [id]);
 
   if (!post[0]) {
     return <div>Loading</div>;
@@ -100,16 +126,16 @@ const PostDetail = () => {
           </div>
         )}
         <div className='text-center p-3'><h3>Comments/Answers</h3></div>
-        {post[0].comment.map(val => (
+        {comment.map(val => (
           <div className="card mb-3 otherCommentCard" key={val.id}>
             <div className="card-body p-0 m-0">
               <p className='px-3 my-2'>
                 <span class="badge bg-danger">Title</span> 
-                <div className='p-2 pb-0'>{val.commentTitle}</div>
+                <div className='pb-0'>{val.commentTitle}</div>
               </p>
               <p className="px-3 py-2">
                 <span class="badge bg-info">Body</span>
-                <div className='p-2'>{val.commentBody}</div>
+                <div className='pt-2 fs-6'>{val.commentBody}</div>
                 </p>
             </div>
             <div className="card-footer text-muted d-flex flex-row justify-content-between p-2">
@@ -129,7 +155,7 @@ const PostDetail = () => {
               </div>
               {val.userId === Number(account.id) && <div className='my-auto'>
                 <button className='btn btn-warning'>Edit <i class="fa-solid fa-pencil"></i></button>
-                <button className='btn btn-danger ms-2'>Delete <i className="fa-solid fa-trash-can"></i></button>
+                <button className='btn btn-danger ms-2' onClick={() => handleDeleteComment(val.id)}>Delete <i className="fa-solid fa-trash-can"></i></button>
                 </div>}
             </div>
           </div>
