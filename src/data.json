@@ -35,25 +35,39 @@
       "userId": 2
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "third question",
       "content": "ahahaha",
       "comment": [],
       "userId": 1
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "another Post",
       "content": "for searching",
       "comment": [],
       "userId": 2
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Câu hỏi thứ N",
       "content": "Câu hỏi tiếng Việt",
-      "comment": [],
+      "comment": [
+        {
+          "id": 1,
+          "commentTitle": "sdfgdsfg",
+          "commentBody": "sdfsdf",
+          "userId": 2
+        }
+      ],
       "userId": 2
+    },
+    {
+      "id": "6",
+      "title": "dfsgsdfg",
+      "content": "dsfgsdfgd",
+      "comment": [],
+      "userId": 1
     }
   ],
   "user": [

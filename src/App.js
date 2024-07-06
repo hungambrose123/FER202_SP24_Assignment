@@ -15,7 +15,7 @@ import PostForm from './components/PostForm';
 function App() {
   return (
     <Provider store={store}>
-      <div className="App container-fluid">
+      <div className="App container-fluid px-0">
         <BrowserRouter>
           <Header />
           <Routes>

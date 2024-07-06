@@ -11,7 +11,7 @@ const PostList = ({posts}) => {
         setSearch(value);
       }
     return (
-        <div className='row container'>
+        <div className='row container mb-5'>
             <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
               <div className="row my-5">
                   <div className="col-10"><input type="search" className="form-control" placeholder="Search question" aria-label="Search" ref={searchRef}/></div>
@@ -26,7 +26,7 @@ const PostList = ({posts}) => {
                                 <div className="card-body">
                                 <h5 className="card-title">{post.title}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">{post.content}</h6>
-                                <Link to={'/postDetail/'+post.id} className='btn btn-primary'>Detail</Link>
+                                <Link to={'/postDetail/'+post.id} className='btn btn-primary'>Detail/Answer</Link>
                             </div>
                         </div>
                 ))}
@@ -40,7 +40,7 @@ const PostList = ({posts}) => {
                                     <div className="card-body">
                                     <h5 className="card-title">{post.title}</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">{post.content}</h6>
-                                    <Link to={'/postDetail/'+post.id} className='btn btn-primary'>Detail</Link>
+                                    <Link to={'/postDetail/'+post.id} className='btn btn-primary'>Detail/Answer</Link>
                                 </div>
                         </div>
                 ))}

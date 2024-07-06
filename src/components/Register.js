@@ -19,7 +19,7 @@ const Register = () => {
     e.preventDefault();
     const newUsername = usernameRef.current.value;
     const newPassword = passwordRef.current.value;
-    axios.post(userApi, {id: accountList.length+1 ,username: newUsername, password: newPassword})
+    axios.post(userApi, {id: Number(accountList.length+1) ,username: newUsername, password: newPassword})
     .then(res => {
       alert('register successfully !');
       dispatch(getUsers());
