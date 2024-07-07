@@ -7,14 +7,15 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../slice/dataFetchingSlice';
 
-let sizeOfComment = 0;
-
 const PostDetail = () => {
   const { id } = useParams();
   const newCommentTitleRef = useRef();
   const newCommentBodyRef = useRef();
+  const editCommentForm = useRef();
+  const closeModal = useRef();
   const [post, setPost] = useState({});
   const [comment, setComment] = useState([]);
+  const [modalData, setModalData] = useState({});
   const userList = useSelector(state => state.data.user);
   const account = useSelector(state => state.account);
   const dispatch = useDispatch();
@@ -53,6 +54,24 @@ const PostDetail = () => {
       })
       .catch(err => console.error(err));
     }
+  }
+
+  const handleModalData = (data) => {
+    setModalData(data);
+  }
+
+  const handleEditComment = () => {
+    const editCommentFormData = editCommentForm.current;
+    const curId = modalData.id;
+    const title = editCommentFormData.querySelector('#title').value;
+    const body = editCommentFormData.querySelector('#body').value;
+    axios.patch(`${commentApi}/${curId}`,{commentTitle: title, commentBody: body})
+    .then(res => {
+      alert('Edit comment successful');
+      refreshData();
+      closeModal.current.click();
+    })
+    .catch(err => console.error(err));
   }
 
   const refreshData = () => {
@@ -154,13 +173,61 @@ const PostDetail = () => {
                 />
               </div>
               {val.userId === Number(account.id) && <div className='my-auto'>
-                <button className='btn btn-warning'>Edit <i class="fa-solid fa-pencil"></i></button>
+                <button className='btn btn-warning' data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => handleModalData(val)}>Edit <i class="fa-solid fa-pencil"></i></button>
                 <button className='btn btn-danger ms-2' onClick={() => handleDeleteComment(val.id)}>Delete <i className="fa-solid fa-trash-can"></i></button>
                 </div>}
             </div>
           </div>
         ))}
       </div>
+
+        <div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit comment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form ref={editCommentForm}>
+              <div>
+                <label htmlFor="title" className='px-2 fs-5 fw-bold p-2'><span className='badge bg-danger'>Title</span></label>
+                <input type="text" className='form-control' placeholder='Write your title here...' id='title' value={modalData.commentTitle} onChange={(e) => setModalData({...modalData, commentTitle: e.target.value})} required/>
+                <label htmlFor="body" className='px-2 fs-5 fw-bold p-2'><span className='badge bg-info'>Body</span></label>
+                <textarea
+                  name="body"
+                  id="body"
+                  placeholder="Write your body here..."
+                  className="form-control inputArea"
+                  value={modalData.commentBody}
+                  onChange={(e) => setModalData({...modalData, commentBody: e.target.value})}
+                  style={{minHeight: '30vh'}}
+                  required
+                />
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+      <b className="ms-1 commentAuthor">
+        {account.username} (You)
+      </b>
+      <img
+                  src='https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw'
+                  alt={`${account.username} avatar`}
+                  className="rounded-circle me-auto"
+                  style={{ width: "30px", height: "30px" }}
+                />
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ref={closeModal}>Close</button>
+        <button type="button" class="btn btn-primary" onClick={handleEditComment}>Save change</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+
+
     </div>
   );
 };

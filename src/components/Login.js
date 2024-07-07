@@ -23,10 +23,8 @@ const Login = () => {
                 if(user.username === username && user.password === password){
                     const accountToSet = {id: user.id, username: user.username, password: user.password};
                     dispatch(setCurrentAccount(accountToSet));
-                    console.log('Login Successful');
-                    setTimeout(() => {
-                        nav('/')
-                    }, 3000);
+                    alert('Login Successful');
+                    nav('/');
                 }else{
                     console.log('Wrong username or password');
                 }

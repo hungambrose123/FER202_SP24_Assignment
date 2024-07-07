@@ -77,8 +77,8 @@
       "userId": 2
     },
     {
-      "commentTitle": "testisngsfsdasd",
-      "commentBody": "dfsgdsfggdf",
+      "commentTitle": "second at post 1",
+      "commentBody": "somebody",
       "postId": 1,
       "userId": 2,
       "id": 5
@@ -89,6 +89,20 @@
       "postId": 1,
       "userId": 2,
       "id": 6
+    },
+    {
+      "commentTitle": "second at post 1",
+      "commentBody": "somebody",
+      "postId": 1,
+      "userId": 2,
+      "id": 7
+    },
+    {
+      "commentTitle": "last one",
+      "commentBody": "last body",
+      "postId": 1,
+      "userId": 2,
+      "id": 8
     }
   ]
 }
