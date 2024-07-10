@@ -275,3 +275,12 @@ a {
 .myFooter{
 	background-color: beige;
 }
+
+
+.text-truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+  }
+  

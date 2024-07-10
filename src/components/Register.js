@@ -81,7 +81,7 @@ const Register = () => {
                     required
                     ref={passwordRef}
                 />
-                <button className='registerBtn'>REGISTER</button>
+                <button className='btn btn-primary my-3' style={{width: '14vw'}}>REGISTER</button>
                 <p>
                     Have an account? <Link to='/login'>Sign in</Link>
                 </p>

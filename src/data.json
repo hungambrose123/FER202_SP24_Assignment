@@ -4,54 +4,79 @@
       "id": "1",
       "title": "First post",
       "content": "First post content",
+      "isSolved": false,
       "userId": 2
     },
     {
       "id": "2",
       "title": "What is your favorite artist ?",
       "content": "basicaltt, i want to talk about .....",
+      "isSolved": false,
       "userId": 2
     },
     {
       "id": "3",
       "title": "third question",
       "content": "ahahaha",
+      "isSolved": true,
       "userId": 1
     },
     {
       "id": "4",
       "title": "another Post",
       "content": "for searching",
+      "isSolved": false,
       "userId": 2
     },
     {
       "id": "5",
       "title": "Câu hỏi thứ N",
       "content": "Câu hỏi tiếng Việt",
+      "isSolved": false,
       "userId": 2
     },
     {
       "id": "6",
       "title": "dfsgsdfg",
       "content": "dsfgsdfgd",
+      "isSolved": false,
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "title": "HungNV second question  for everybody",
+      "content": "Kratos is the main character of what video game series?",
+      "isSolved": false,
+      "userId": 1
+    },
+    {
+      "id": 8,
+      "title": "text overflow testing",
+      "content": "Kratos is the main character of what video game series? God of War\nIn what country would you find Mount Kilimanjaro? Tanzania\nWhat is a group of pandas known as? An embarrassment\nWhat European country experienced the highest rate of population decline from 2015 - 2020? Lithuania\nHow many bones do we have in an ear? 3\nWho famously crossed the Alps with elephants on the way to war with the Romans? Hannibal",
+      "isSolved": true,
       "userId": 1
     }
   ],
   "user": [
     {
-      "id": "1",
+      "id": 1,
       "username": "HungNV",
       "password": "HungNV123"
     },
     {
-      "id": "2",
+      "id": 2,
       "username": "abc",
       "password": "123"
     },
     {
-      "id": "3",
+      "id": 3,
       "username": "nrereg",
       "password": "098"
+    },
+    {
+      "id": 4,
+      "username": "DatNV",
+      "password": "DatNV123"
     }
   ],
   "comment": [
@@ -103,6 +128,37 @@
       "postId": 1,
       "userId": 2,
       "id": 8
+    },
+    {
+      "commentTitle": "hungnv questioj",
+      "commentBody": "hungnva question boduy",
+      "postId": 1,
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "commentTitle": "DATnv answer",
+      "commentBody": "testing answer    by datnv (edited)",
+      "postId": 2,
+      "userId": 4,
+      "id": 10
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "commentId": 1,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "commentId": 1,
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "commentId": 1,
+      "userId": 3
     }
   ]
 }

@@ -72,11 +72,11 @@ const Login = () => {
     <main className='login'>
             <h1 className='loginTitle'>Login</h1>
             <form className='loginForm'  onSubmit={handleLogin}>
-                <label htmlFor='email'>Email Address</label>
+                <label htmlFor='username'>Username</label>
                 <input
                     type='text'
-                    name='email'
-                    id='email'
+                    name='username'
+                    id='username'
                     ref={usernameRef}
                     required
                 />
@@ -88,7 +88,7 @@ const Login = () => {
                     ref={passwordRef}
                     required
                 />
-                <button className='loginBtn'>SIGN IN</button>
+                <button className='btn btn-primary my-3' style={{width: '14vw'}}>Login</button>
                 <p>
                     Don't have an account? <Link to='/register'>Create one</Link>
                 </p>

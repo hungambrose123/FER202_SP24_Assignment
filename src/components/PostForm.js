@@ -27,7 +27,7 @@ const PostForm = () => {
                 id: Number(postList.length+1),
                 title: title,
                 content: content,
-                comment: [],
+                isSolved: false,
                 userId: Number(account.id)
             }
             axios.post(postApi, newPost)

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import postApi from '../api/postApi';
 import commentApi from '../api/commentApi';
+import likesApi from '../api/likesApi';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +16,7 @@ const PostDetail = () => {
   const closeModal = useRef();
   const [post, setPost] = useState({});
   const [comment, setComment] = useState([]);
+  const [likeCount, setLikeCount] = useState(0);
   const [modalData, setModalData] = useState({});
   const userList = useSelector(state => state.data.user);
   const account = useSelector(state => state.account);
@@ -24,6 +26,13 @@ const PostDetail = () => {
   const getUsername = (userId) => {
     return userList.find(user => Number(user.id) === userId)?.username || 'Unknown User';
   };
+
+  // const getLikesCountByComment = (commentId) => {
+  //   axios.get(`${likesApi}?commentId=${commentId}`)
+  //   .then(res => setLikeCount(res.data.length))
+  //   .catch(err => console.error(err));
+  //   return likeCount;
+  // }
 
   const handlePostComment = (e) => {
     e.preventDefault();
@@ -74,6 +83,17 @@ const PostDetail = () => {
     .catch(err => console.error(err));
   }
 
+  const handleSolve = () => {
+    if(window.confirm("Do you want to set this post as solved ?, this action cannot be returned.")){
+      axios.patch(`${postApi}/${id}`, {isSolved: !post.isSolved})
+      .then(res => {
+        alert("solved successfully !");
+        refreshData();
+      })
+      .catch(err => console.error(err));
+    }
+  }
+
   const refreshData = () => {
     axios.get(`${postApi}?id=${id}`)
     .then(res => {
@@ -97,11 +117,17 @@ const PostDetail = () => {
     return <div>Loading</div>;
   }
 
+  console.log(post[0].userId, account.id)
 
   return (
-    <div className="container">
-      <div className='p-3 my-2 border border-3 border-danger'>
-        <h2><span class="badge bg-danger">Question </span> <span className='text-danger'>{post[0].title}</span></h2>
+    <div className="container py-5">
+      <div>
+        {post[0].isSolved ? <span class="badge bg-success fs-4">Solved <i class="fa-solid fa-flag-checkered"></i></span>
+        : <span class="badge bg-danger fs-4">Unsolved <i class="fa-solid fa-circle-question"></i></span>}
+        {(Number(post[0].userId) === Number(account.id) && post[0].isSolved === false) && <button className='btn btn-success ms-3 mb-2' onClick={handleSolve}>Change to solved <i class="fa-solid fa-check"></i></button>}
+      </div>
+      <div className='p-3 my-2 border border-3 border-warning'>
+        <h2><span class="badge bg-warning">Question </span> <span className='text-warning'>{post[0].title}</span></h2>
       </div>
       <div className='p-3 my-2 border border-3 border-secondary'>
         <h3><span class="badge bg-info text-dark">Detail </span> <p className='fw-normal'>{post[0].content}</p></h3>
@@ -110,7 +136,7 @@ const PostDetail = () => {
         {account.id === -1 && (
           <div className='py-4'>Please login to post a comment/answer <Link to='/login' className='btn btn-primary'>Log in <i class="fa-solid fa-right-to-bracket"></i></Link></div>
         )}
-        {account.id !== -1 && (
+        {account.id !== -1 && !post[0].isSolved && (
           <div className="card mb-3 newCommentCard">
             <form onSubmit={handlePostComment}>
               <div className="card-body p-0 m-0">
@@ -148,8 +174,12 @@ const PostDetail = () => {
         {comment.map(val => (
           <div className="card mb-3 otherCommentCard" key={val.id}>
             <div className="card-body p-0 m-0">
+              {/* <div className='px-3 my-2'>
+                <span className='badge bg-success me-2'>Like: {() => getLikesCountByComment(val.id)}</span>
+                <button className='badge bg-secondary'><i class="fa-regular fa-heart"></i></button>
+                </div> */}
               <p className='px-3 my-2'>
-                <span class="badge bg-danger">Title</span> 
+                <span class="badge bg-warning me-auto">Title</span>
                 <div className='pb-0'>{val.commentTitle}</div>
               </p>
               <p className="px-3 py-2">
