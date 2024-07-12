@@ -19,7 +19,7 @@ const Register = () => {
     e.preventDefault();
     const newUsername = usernameRef.current.value;
     const newPassword = passwordRef.current.value;
-    axios.post(userApi, {id: Number(accountList.length+1) ,username: newUsername, password: newPassword})
+    axios.post(userApi, {id: Number(accountList.length+1) ,username: newUsername, password: newPassword, avatar: 'https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw'})
     .then(res => {
       alert('register successfully !');
       dispatch(getUsers());

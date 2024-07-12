@@ -27,6 +27,10 @@ const PostDetail = () => {
     return userList.find(user => Number(user.id) === userId)?.username || 'Unknown User';
   };
 
+  const getUserAvatar = (userId) => {
+    return userList.find(user => Number(user.id) === userId)?.avatar || 'https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw';
+  };
+
   // const getLikesCountByComment = (commentId) => {
   //   axios.get(`${likesApi}?commentId=${commentId}`)
   //   .then(res => setLikeCount(res.data.length))
@@ -155,7 +159,7 @@ const PostDetail = () => {
               </div>
               <div className="card-footer text-muted d-flex flex-row justify-content-between">
                 <img
-                  src='https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw'
+                  src={account.avatar}
                   alt={`${account.username} avatar`}
                   className="rounded-circle"
                   style={{ width: "30px", height: "30px" }}
@@ -196,7 +200,7 @@ const PostDetail = () => {
                   </b>
                 </span>
                 <img
-                  src='https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw'
+                  src={getUserAvatar(val.userId)}
                   alt={`user avatar`}
                   className="rounded-circle"
                   style={{ width: "20px", height: "20px" }}
@@ -244,7 +248,7 @@ const PostDetail = () => {
         {account.username} (You)
       </b>
       <img
-                  src='https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw'
+                  src={account.avatar}
                   alt={`${account.username} avatar`}
                   className="rounded-circle me-auto"
                   style={{ width: "30px", height: "30px" }}

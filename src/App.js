@@ -11,6 +11,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import PostDetail from './components/PostDetail';
 import PostForm from './components/PostForm';
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/createQuestion' element={<PostForm />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/userProfile' element={<UserProfile />} />
             <Route path='/postDetail/:id' element={<PostDetail/>} />
             <Route path='*' element={<Error />} />
           </Routes>

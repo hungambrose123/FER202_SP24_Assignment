@@ -66,7 +66,8 @@
     {
       "id": 2,
       "username": "abc",
-      "password": "123"
+      "password": "123",
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/640px-Cat03.jpg"
     },
     {
       "id": 3,

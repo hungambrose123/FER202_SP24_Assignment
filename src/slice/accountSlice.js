@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     id: -1,
     username: null,
-    password: null
+    password: null,
+    avatar: null
 };
 
 export const accountSlice = createSlice({
@@ -14,11 +15,13 @@ export const accountSlice = createSlice({
             state.id = action.payload.id;
             state.username = action.payload.username;
             state.password = action.payload.password;
+            state.avatar = action.payload.avatar;
         },
         removeCurrentAccount:(state) => {
             state.id = initialState.id;
             state.username = initialState.username;
             state.password = initialState.password;
+            state.avatar = initialState.avatar;
         }
     }
 })

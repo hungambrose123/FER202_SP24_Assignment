@@ -27,7 +27,7 @@ const PostList = ({posts}) => {
             </form>
 
             <div className="col-12">
-                <div className="row gap-1">
+                <div className="row gap-4">
                 {search === '' && posts.map(post => (
                         <div className="card col-3" style={{ minWidthidth: "3rem" }} key={post.id}>
                                 <div className="card-body pb-0">

@@ -21,7 +21,7 @@ const Login = () => {
         .then(res => {
             res.data.forEach(user => {
                 if(user.username === username && user.password === password){
-                    const accountToSet = {id: user.id, username: user.username, password: user.password};
+                    const accountToSet = {id: user.id, username: user.username, password: user.password, avatar: user.avatar};
                     dispatch(setCurrentAccount(accountToSet));
                     alert('Login Successful');
                     nav('/');
