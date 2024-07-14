@@ -12,6 +12,7 @@ import Register from './components/Register';
 import PostDetail from './components/PostDetail';
 import PostForm from './components/PostForm';
 import UserProfile from './components/UserProfile';
+import UserQuestionList from './components/UserQuestionList';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/userProfile' element={<UserProfile />} />
+            <Route path='/userQuestionList' element={<UserQuestionList />} />
             <Route path='/postDetail/:id' element={<PostDetail/>} />
             <Route path='*' element={<Error />} />
           </Routes>

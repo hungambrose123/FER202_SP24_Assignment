@@ -54,6 +54,7 @@ const PostForm = () => {
                     value={title}
                     id='postTitle'
                     onChange={(e) => setTitle(e.target.value)}
+                    required
                 />
                 <label htmlFor="postContent" className='badge bg-info text-dark p-2 m-2'>Question content</label>
                 <textarea
@@ -63,6 +64,7 @@ const PostForm = () => {
                     id='postContent'
                     style={{minHeight: '40vh'}}
                     onChange={(e) => setContent(e.target.value)}
+                    required
                 />
                 <button className='btn btn-primary my-3' type="submit">Create question</button>
             </form>}

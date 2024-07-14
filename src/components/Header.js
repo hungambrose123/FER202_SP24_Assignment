@@ -31,6 +31,7 @@ const Header = () => {
         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li className="px-2"><NavLink to='/' className='text-decoration-none text-dark' style={onSelect}>Home</NavLink></li>
           <li className='px-2'><NavLink to='/createQuestion' className='text-decoration-none text-dark' style={onSelect}>Create question</NavLink></li>
+          {account.id !== -1 && <li className='px-2'><NavLink to='/userQuestionList' className='text-decoration-none text-dark' style={onSelect}>Your questions</NavLink></li>}
         </ul>
 
         {account.id === -1 && <ul className="nav col-12 col-lg-auto me-1 justify-content-center">
@@ -44,7 +45,7 @@ const Header = () => {
             <img src={account.avatar} alt="mdo" width="32" height="32" className="rounded-circle" />
           </a>
           <ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li className="px-2"><Link to='/setting' className="dropdown-item">Settings</Link></li>
+            {/* <li className="px-2"><Link to='/setting' className="dropdown-item">Settings</Link></li> */}
             <li className="px-2"><Link to='/userProfile' className="dropdown-item">Profile</Link></li>
             <li><hr class="dropdown-divider" /></li>
             <li><button className="dropdown-item" onClick={handleSignOut}>Sign out</button></li>

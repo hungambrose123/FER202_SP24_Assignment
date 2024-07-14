@@ -61,7 +61,8 @@
     {
       "id": 1,
       "username": "HungNV",
-      "password": "HungNV123"
+      "password": "HungNV123",
+      "avatar": "https://i.pinimg.com/736x/49/81/95/498195858c3f42c5db217446dbb770ed.jpg"
     },
     {
       "id": 2,
@@ -72,12 +73,14 @@
     {
       "id": 3,
       "username": "nrereg",
-      "password": "098"
+      "password": "098",
+      "avatar": "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960"
     },
     {
       "id": 4,
       "username": "DatNV",
-      "password": "DatNV123"
+      "password": "DatNV123",
+      "avatar": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369818"
     }
   ],
   "comment": [
@@ -111,17 +114,10 @@
     },
     {
       "commentTitle": "another one",
-      "commentBody": "bncvbcvb",
+      "commentBody": "bncvbcvb (edit time: 1)",
       "postId": 1,
       "userId": 2,
       "id": 6
-    },
-    {
-      "commentTitle": "second at post 1",
-      "commentBody": "somebody",
-      "postId": 1,
-      "userId": 2,
-      "id": 7
     },
     {
       "commentTitle": "last one",

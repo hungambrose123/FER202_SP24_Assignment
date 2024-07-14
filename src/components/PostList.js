@@ -6,6 +6,10 @@ const PostList = ({posts}) => {
     const searchRef = useRef();
     const [search, setSearch] = useState('');
     const userList = useSelector(state => state.data.user);
+
+    const getUserAvatar = (userId) => {
+        return userList.find(user => Number(user.id) === userId)?.avatar || 'https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw';
+      };
     
     const handleSearch =(e) => {
         e.preventDefault();
@@ -36,7 +40,14 @@ const PostList = ({posts}) => {
                                 <h5 className="card-title mt-3 text-truncate">{post.title}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted text-truncate">{post.content}</h6>
                                 <Link to={'/postDetail/'+post.id} className='btn btn-primary'>Detail/Answer</Link>
-                                <p className='text-muted fs-6 mt-4'>Posted by {getUsername(post.userId)}</p>
+                                <p className='text-muted fs-6 mt-4'>Posted by {getUsername(post.userId)}
+                                <img
+                                src={getUserAvatar(post.userId)}
+                                alt={`user avatar`}
+                                className="rounded-circle ms-2"
+                                style={{ width: "20px", height: "20px" }}
+                                />
+                                </p>
                             </div>
                         </div>
                 ))}
