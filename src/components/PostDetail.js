@@ -42,12 +42,17 @@ const PostDetail = () => {
     e.preventDefault();
     const title = newCommentTitleRef.current.value;
     const body = newCommentBodyRef.current.value;
+    const date = new Date();
+    const newPostDate = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}, ${date.toLocaleTimeString()}`;
+
     const newComment = {
       commentTitle: title,
       commentBody: body,
       postId: Number(id),
-      userId: Number(account.id)
+      userId: Number(account.id),
+      postDate: newPostDate
     };
+    // console.log(newComment)
     axios.post(`${commentApi}`, newComment)
     .then(() => {
       alert('Insert new comment successful');
@@ -138,7 +143,7 @@ const PostDetail = () => {
       </div>
       <div className='container'>
         {account.id === -1 && (
-          <div className='py-4'>Please login to post a comment/answer <Link to='/login' className='btn btn-primary'>Log in <i class="fa-solid fa-right-to-bracket"></i></Link></div>
+          <div className='py-4'>Please login to post a comment/answer <Link to={'/login/'+id} className='btn btn-primary'>Log in <i class="fa-solid fa-right-to-bracket"></i></Link></div>
         )}
         {account.id !== -1 && !post[0].isSolved && (
           <div className="card mb-3 newCommentCard">
@@ -205,6 +210,11 @@ const PostDetail = () => {
                   className="rounded-circle"
                   style={{ width: "20px", height: "20px" }}
                 />
+                <span className='me-2'>
+                  <b className="ms-1 text-muted">
+                    Date: {val.postDate !== undefined && val.postDate}
+                  </b>
+                </span>
               </div>
               {val.userId === Number(account.id) && <div className='my-auto'>
                 <button className='btn btn-warning' data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => handleModalData(val)}>Edit <i class="fa-solid fa-pencil"></i></button>
@@ -260,7 +270,6 @@ const PostDetail = () => {
   </div>
 </div>
         </div>
-
 
     </div>
   );

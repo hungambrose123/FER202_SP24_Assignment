@@ -55,6 +55,20 @@
       "content": "Kratos is the main character of what video game series? God of War\nIn what country would you find Mount Kilimanjaro? Tanzania\nWhat is a group of pandas known as? An embarrassment\nWhat European country experienced the highest rate of population decline from 2015 - 2020? Lithuania\nHow many bones do we have in an ear? 3\nWho famously crossed the Alps with elephants on the way to war with the Romans? Hannibal",
       "isSolved": true,
       "userId": 1
+    },
+    {
+      "id": 9,
+      "title": "DANV123",
+      "content": "aaewwer",
+      "isSolved": false,
+      "userId": 4
+    },
+    {
+      "id": 10,
+      "title": "TRINM",
+      "content": "how to write a question ?",
+      "isSolved": false,
+      "userId": 5
     }
   ],
   "user": [
@@ -62,7 +76,7 @@
       "id": 1,
       "username": "HungNV",
       "password": "HungNV123",
-      "avatar": "https://i.pinimg.com/736x/49/81/95/498195858c3f42c5db217446dbb770ed.jpg"
+      "avatar": "https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg"
     },
     {
       "id": 2,
@@ -81,6 +95,12 @@
       "username": "DatNV",
       "password": "DatNV123",
       "avatar": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369818"
+    },
+    {
+      "id": 5,
+      "username": "TriNM",
+      "password": "TriNM123",
+      "avatar": "https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw"
     }
   ],
   "comment": [
@@ -139,23 +159,44 @@
       "postId": 2,
       "userId": 4,
       "id": 10
-    }
-  ],
-  "likes": [
-    {
-      "id": 1,
-      "commentId": 1,
-      "userId": 1
     },
     {
-      "id": 2,
-      "commentId": 1,
-      "userId": 2
+      "commentTitle": "True content",
+      "commentBody": "TRue content body",
+      "postId": 1,
+      "userId": 4,
+      "id": 11
     },
     {
-      "id": 3,
-      "commentId": 1,
-      "userId": 3
+      "commentTitle": "fyyr",
+      "commentBody": "t7t7t8t",
+      "postId": 1,
+      "userId": 2,
+      "id": 12
+    },
+    {
+      "commentTitle": "zxcz",
+      "commentBody": "gdg",
+      "postId": 1,
+      "userId": 2,
+      "postDate": "15-7-2024",
+      "id": 13
+    },
+    {
+      "commentTitle": "5858",
+      "commentBody": "555",
+      "postId": 1,
+      "userId": 2,
+      "postDate": "15-7-2024",
+      "id": 14
+    },
+    {
+      "commentTitle": "ouyiui",
+      "commentBody": "jklghgjh",
+      "postId": 1,
+      "userId": 2,
+      "postDate": "15-7-2024, 8:37:40 AM",
+      "id": 15
     }
   ]
 }

@@ -1,11 +1,35 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const PostList = ({posts}) => {
     const searchRef = useRef();
     const [search, setSearch] = useState('');
+    const [curPage, setCurPage] = useState(1);
     const userList = useSelector(state => state.data.user);
+
+    const postCount = posts.length;
+    const postPerPage = 6;
+    const totalPage = Math.ceil(postCount/postPerPage);
+    const lastIndex = curPage * postPerPage;
+    const firstIndex = lastIndex - postPerPage;
+    const numbers = [...Array(totalPage+1).keys()].slice(1);
+
+    const prevPage = () => {
+        if(curPage != firstIndex){
+            setCurPage(curPage-1);
+        }
+    }
+
+    const setPage = (page) => {
+        setCurPage(page);
+    }
+
+    const nextPage = () => {
+        if(curPage != lastIndex){
+            setCurPage(curPage+1);
+        }
+    }
 
     const getUserAvatar = (userId) => {
         return userList.find(user => Number(user.id) === userId)?.avatar || 'https://play-lh.googleusercontent.com/z-ppwF62-FuXHMO7q20rrBMZeOnHfx1t9UPkUqtyouuGW7WbeUZECmyeNHAus2Jcxw=w526-h296-rw';
@@ -32,7 +56,7 @@ const PostList = ({posts}) => {
 
             <div className="col-12">
                 <div className="row gap-4">
-                {search === '' && posts.map(post => (
+                {search === '' && posts.slice(firstIndex, lastIndex).map(post => (
                         <div className="card col-3" style={{ minWidthidth: "3rem" }} key={post.id}>
                                 <div className="card-body pb-0">
                                 {post.isSolved ? <span className='badge bg-success'>Solved <i class="fa-solid fa-flag-checkered"></i></span> 
@@ -56,7 +80,7 @@ const PostList = ({posts}) => {
 
             <div className="col-12">
                 <div className="row gap-1">
-                {search !== '' && posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase())).map(post => (
+                {search !== '' && posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase())).slice(firstIndex, lastIndex).map(post => (
                         <div className="card col-3" style={{ minWidthidth: "3rem" }} key={post.id}>
                         <div className="card-body pb-0">
                         {post.isSolved ? <span className='badge bg-success'>Solved <i class="fa-solid fa-flag-checkered"></i></span> 
@@ -70,6 +94,20 @@ const PostList = ({posts}) => {
                 ))}
                 </div>
            </div>
+
+        <div className='container mt-3'>
+          <p>Page: </p>
+          <div className="row">
+            <div className="col-12">
+                {/* <button className='btn btn-primary m-1' onClick={() => prevPage()}>Prev</button> */}
+                {numbers.map(value => {
+                    return <button className='btn btn-primary m-1' onClick={()=> setPage(value)}>{value}</button>
+                })}
+                {/* <button className='btn btn-primary m-1' onClick={() => nextPage()}>Next</button> */}
+                </div>
+          </div>
+          <p>Total pages: {totalPage}</p>
+        </div>
 
         </div>
     );

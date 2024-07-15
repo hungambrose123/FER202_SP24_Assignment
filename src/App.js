@@ -24,6 +24,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/createQuestion' element={<PostForm />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/login/:id' element={<Login/>} />
             <Route path='/register' element={<Register />} />
             <Route path='/userProfile' element={<UserProfile />} />
             <Route path='/userQuestionList' element={<UserQuestionList />} />
