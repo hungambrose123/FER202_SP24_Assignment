@@ -8,7 +8,12 @@ const PostList = ({posts}) => {
     const [curPage, setCurPage] = useState(1);
     const userList = useSelector(state => state.data.user);
 
-    const postCount = posts.length;
+    let postCount;
+    if(search === ''){
+        postCount = posts.length;
+    }else{
+        postCount = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase())).length;
+    }
     const postPerPage = 6;
     const totalPage = Math.ceil(postCount/postPerPage);
     const lastIndex = curPage * postPerPage;
